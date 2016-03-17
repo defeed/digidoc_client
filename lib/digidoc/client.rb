@@ -292,7 +292,7 @@ module Digidoc
       session_code = options.delete(:session_code) || self.session_code
       filename = options.delete(:filename) || File.basename(file.path)
       mime_type = options[:mime_type] || calc_mime_type(file)
-      use_hashcode = false #options.key?(:use_hashcode) || true
+      options.key?(:use_hashcode) || true
       filename = filename.gsub('/', '-')
 
       response = savon_client.call('AddDataFile') do |locals|
